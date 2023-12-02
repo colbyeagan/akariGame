@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PuzzleLibraryImpl implements PuzzleLibrary {
-  private final List<Puzzle> puzzles;
+  private List<Puzzle> puzzles;
 
   public PuzzleLibraryImpl() {
     this.puzzles = new ArrayList<>();
