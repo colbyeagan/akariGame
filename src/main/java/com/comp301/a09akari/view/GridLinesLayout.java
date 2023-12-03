@@ -77,6 +77,7 @@ public class GridLinesLayout implements FXComponent {
           if (controller.isLamp(r, c)) {
             if (controller.getIsIllegal(r, c)) {
               stack.getChildren().add(new Label("X"));
+              stack.setStyle("-fx-background-color: red;");
             } else {
               stack.getChildren().add(imgView);
             }

@@ -20,28 +20,18 @@ public class ControlView implements FXComponent {
   public Parent render() {
     HBox layout = new HBox();
     layout.setAlignment(Pos.CENTER);
-
     Button reset = new Button("Reset Puzzle");
     Button next = new Button("->");
     Button prev = new Button("<-");
     Button rand = new Button("Random Puzzle");
-
     rand.setOnAction((event) -> controller.clickRandPuzzle());
     layout.getChildren().add(rand);
-
-    // reset
     reset.setOnAction((event) -> controller.clickResetPuzzle());
     layout.getChildren().add(reset);
-
-    // prev
     prev.setOnAction((event) -> controller.clickPrevPuzzle());
     layout.getChildren().add(prev);
-
-    // next
     next.setOnAction((event) -> controller.clickNextPuzzle());
     layout.getChildren().add(next);
-
-    // Showing number of puzzle out of total puzzles
     Puzzle puzzle = controller.getActivePuzzle();
     layout.setAlignment(Pos.CENTER);
     String numPuzzles = Integer.toString(controller.getNumberOfPuzzles());
