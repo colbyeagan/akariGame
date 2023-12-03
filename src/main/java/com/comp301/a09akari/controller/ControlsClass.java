@@ -30,7 +30,8 @@ public class ControlsClass implements AlternateMvcController {
   @Override
   public void clickRandPuzzle() {
     int index = model.getActivePuzzleIndex();
-    while (index == model.getActivePuzzleIndex()) {
+    int currInd = model.getActivePuzzleIndex();
+    while (index == currInd) {
       index = (int) Math.floor(Math.random() * ((model.getPuzzleLibrarySize() - 1) + 1));
     }
     model.setActivePuzzleIndex(index);

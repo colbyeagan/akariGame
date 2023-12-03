@@ -66,6 +66,9 @@ public class ModelImpl implements Model {
     }
 
     for (int j = c; j < puzzle.getWidth(); j++) {
+      System.out.println("Height: " + puzzle.getHeight());
+      System.out.println("Width: " + puzzle.getWidth());
+      System.out.println("Row: " + j + "Col: " + c);
       if (lampGrid[r][j]) {
         return true;
       } else if (puzzle.getCellType(r, j) != CellType.CORRIDOR) {
@@ -74,6 +77,9 @@ public class ModelImpl implements Model {
     }
 
     for (int j = c; j >= 0; j--) {
+      System.out.println("Height: " + puzzle.getHeight());
+      System.out.println("Width: " + puzzle.getWidth());
+      System.out.println("Row: " + j + "Col: " + c);
       if (lampGrid[r][j]) {
         return true;
       } else if (puzzle.getCellType(r, j) != CellType.CORRIDOR) {
@@ -93,6 +99,9 @@ public class ModelImpl implements Model {
     }
 
     for (int i = r; i >= 0; i--) {
+      System.out.println("Height: " + puzzle.getHeight());
+      System.out.println("Width: " + puzzle.getWidth());
+      System.out.println("Row: " + i + "Col: " + c);
       if (lampGrid[i][c]) {
         return true;
       } else if (puzzle.getCellType(i, c) != CellType.CORRIDOR) {

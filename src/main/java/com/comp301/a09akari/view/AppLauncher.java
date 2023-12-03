@@ -32,26 +32,12 @@ public class AppLauncher extends Application {
     library.addPuzzle(puzzle4);
     library.addPuzzle(puzzle5);
 
-    // model instance
     Model model = new ModelImpl(library);
-
-    // controller instance
     ControlsClass controller = new ControlsClass(model);
-
-    // view
     View view = new View(controller);
-
-    // scene
     Scene scene = new Scene(view.render(), 800, 800);
     stage.setScene(scene);
-
-    // updating the screen
-    model.addObserver(
-        (Model m) -> {
-          scene.setRoot(view.render());
-        });
-    // show
-    // stage.setTitle("Akari");
+    model.addObserver((Model m) -> scene.setRoot(view.render()));
     stage.show();
   }
 }
