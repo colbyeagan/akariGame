@@ -19,8 +19,7 @@ public class SolvedView implements FXComponent {
     HBox layout = new HBox();
     if (controller.isSolved()) {
       layout.getChildren().add(new Text("SOLVED"));
-    }
-    else {
+    } else {
       layout.getChildren().add(new Text("NOT SOLVED"));
     }
     layout.setPadding(new Insets(10, 10, 10, 10));

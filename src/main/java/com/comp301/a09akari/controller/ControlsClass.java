@@ -1,4 +1,3 @@
-
 package com.comp301.a09akari.controller;
 
 import com.comp301.a09akari.model.CellType;
@@ -6,7 +5,7 @@ import com.comp301.a09akari.model.Model;
 import com.comp301.a09akari.model.Puzzle;
 
 public class ControlsClass implements AlternateMvcController {
-  private final Model model;
+  private Model model;
 
   public ControlsClass(Model model) {
     this.model = model;
@@ -15,6 +14,8 @@ public class ControlsClass implements AlternateMvcController {
   @Override
   public void clickNextPuzzle() {
     model.setActivePuzzleIndex((model.getActivePuzzleIndex() + 1) % model.getPuzzleLibrarySize());
+    System.out.println("Index: " + model.getActivePuzzleIndex());
+    System.out.println("Lib Size: " + model.getPuzzleLibrarySize());
   }
 
   @Override

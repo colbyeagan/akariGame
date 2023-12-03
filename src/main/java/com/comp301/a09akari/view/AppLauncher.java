@@ -46,11 +46,12 @@ public class AppLauncher extends Application {
     stage.setScene(scene);
 
     // updating the screen
-    model.addObserver((Model m) -> {
+    model.addObserver(
+        (Model m) -> {
           scene.setRoot(view.render());
-    });
+        });
     // show
-   // stage.setTitle("Akari");
+    // stage.setTitle("Akari");
     stage.show();
   }
 }

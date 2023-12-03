@@ -24,6 +24,10 @@ public class ControlView implements FXComponent {
     Button reset = new Button("Reset Puzzle");
     Button next = new Button("->");
     Button prev = new Button("<-");
+    Button rand = new Button("Random Puzzle");
+
+    rand.setOnAction((event) -> controller.clickRandPuzzle());
+    layout.getChildren().add(rand);
 
     // reset
     reset.setOnAction((event) -> controller.clickResetPuzzle());
@@ -41,7 +45,7 @@ public class ControlView implements FXComponent {
     Puzzle puzzle = controller.getActivePuzzle();
     layout.setAlignment(Pos.CENTER);
     String numPuzzles = Integer.toString(controller.getNumberOfPuzzles());
-    String indexS = Integer.toString(controller.getIndex()+1);
+    String indexS = Integer.toString(controller.getIndex() + 1);
     Text puzzleText = new Text("Puzzle: " + indexS + " of " + numPuzzles);
     layout.getChildren().add(puzzleText);
     layout.setPadding(new Insets(10, 10, 20, 10));

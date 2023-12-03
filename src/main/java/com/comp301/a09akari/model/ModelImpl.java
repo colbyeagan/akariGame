@@ -39,15 +39,14 @@ public class ModelImpl implements Model {
   public void removeLamp(int r, int c) {
     if (this.outOfBTest(r, c)) {
       throw new IndexOutOfBoundsException("Index out of bounds.");
-    }
-    else if (getActivePuzzle().getCellType(r, c) != CellType.CORRIDOR) {
+    } else if (getActivePuzzle().getCellType(r, c) != CellType.CORRIDOR) {
       throw new IllegalArgumentException("Cell isn't a corridor");
     }
     lampGrid[r][c] = false;
     notify(this);
   }
 
-  private boolean outOfBTest(int r, int c){
+  private boolean outOfBTest(int r, int c) {
     if (r > getActivePuzzle().getHeight() - 1
         || c > getActivePuzzle().getWidth() - 1
         || r < 0
@@ -83,6 +82,9 @@ public class ModelImpl implements Model {
     }
 
     for (int i = r; i < puzzle.getHeight(); i++) {
+      System.out.println("Height: " + puzzle.getHeight());
+      System.out.println("Width: " + puzzle.getWidth());
+      System.out.println("Row: " + i + "Col: " + c);
       if (lampGrid[i][c]) {
         return true;
       } else if (puzzle.getCellType(i, c) != CellType.CORRIDOR) {
@@ -102,7 +104,7 @@ public class ModelImpl implements Model {
 
   @Override
   public boolean isLamp(int r, int c) {
-    if (outOfBTest(r,c)) {
+    if (outOfBTest(r, c)) {
       throw new IndexOutOfBoundsException("out of bounds.");
     }
     if (getActivePuzzle().getCellType(r, c) != CellType.CORRIDOR) {
@@ -118,8 +120,7 @@ public class ModelImpl implements Model {
 
     if (outOfBTest(r, c)) {
       throw new IndexOutOfBoundsException("Index out of bounds.");
-    }
-    else if (!(lampGrid[r][c])) {
+    } else if (!(lampGrid[r][c])) {
       throw new IllegalArgumentException("No light put here");
     }
 
@@ -171,11 +172,10 @@ public class ModelImpl implements Model {
   public void setActivePuzzleIndex(int index) {
     if (index >= puzzleLibrary.size() || index < 0) {
       throw new IndexOutOfBoundsException();
-    }
-    else{
-    this.puzzle = puzzleLibrary.getPuzzle(index);
+    } else {
+      this.puzzle = puzzleLibrary.getPuzzle(index);
       this.currentPuzzle = index;
-    this.resetPuzzle();
+      this.resetPuzzle();
     }
   }
 
@@ -200,47 +200,42 @@ public class ModelImpl implements Model {
         if (puzzle.getCellType(r, c) == CellType.CORRIDOR) {
           if (!isLit(r, c)) {
             return false;
-          }
-          else if (isLamp(r, c) && isLampIllegal(r, c)) {
+          } else if (isLamp(r, c) && isLampIllegal(r, c)) {
             return false;
           }
-        }
-        else if (puzzle.getCellType(r, c) == CellType.CLUE) {
+        } else if (puzzle.getCellType(r, c) == CellType.CLUE) {
           if (!isClueSatisfied(r, c)) {
             return false;
           }
         }
-
       }
     }
     return true;
   }
 
-
   @Override
   public boolean isClueSatisfied(int r, int c) {
     int height = puzzle.getHeight();
     int width = puzzle.getWidth();
-    if(this.outOfBTest(r, c)){
+    if (this.outOfBTest(r, c)) {
       throw new IndexOutOfBoundsException();
-    }
-    else if(getActivePuzzle().getCellType(r, c) != CellType.CLUE) {
+    } else if (getActivePuzzle().getCellType(r, c) != CellType.CLUE) {
       throw new IllegalArgumentException("Not a clue cell");
     }
     int touchingLamps = 0;
 
     if (c > 0 && lampGrid[r][c - 1]) {
-      touchingLamps+=1;
-      }
+      touchingLamps += 1;
+    }
 
     if (r > 0 && lampGrid[r - 1][c]) {
-      touchingLamps+=1;
+      touchingLamps += 1;
     }
     if (c < width - 1 && lampGrid[r][c + 1]) {
-      touchingLamps+=1;
+      touchingLamps += 1;
     }
     if (r < height - 1 && lampGrid[r + 1][c]) {
-      touchingLamps+=1;
+      touchingLamps += 1;
     }
     return (touchingLamps == puzzle.getClue(r, c));
   }

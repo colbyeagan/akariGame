@@ -40,15 +40,13 @@ public class GridLinesLayout implements FXComponent {
           StackPane square = new StackPane();
           if (controller.isClueSatisfied(r, c)) {
             square.setStyle("-fx-background-color: green;");
-          }
-          else{
+          } else {
             square.setStyle("-fx-background-color: black;");
           }
 
           square = this.setSquare(puzzle, r, c, square, layout);
           layout.add(square, c, r);
           layout.setAlignment(Pos.CENTER);
-
         }
         if (puzzle.getCellType(r, c) == CellType.WALL) {
           StackPane square = new StackPane();
@@ -91,20 +89,20 @@ public class GridLinesLayout implements FXComponent {
     return layout;
   }
 
-  private StackPane setSquare(Puzzle puzzle, int r, int c, StackPane square, GridPane layout){
+  private StackPane setSquare(Puzzle puzzle, int r, int c, StackPane square, GridPane layout) {
     Text title = new Text(Integer.toString(puzzle.getClue(r, c)));
     title.setFill(Color.WHITE);
     square.getChildren().add(title);
     return square;
   }
 
-  private StackPane setSquareYellow(Puzzle puzzle, int r, int c, StackPane square, GridPane layout){
+  private StackPane setSquareYellow(
+      Puzzle puzzle, int r, int c, StackPane square, GridPane layout) {
     Text title = new Text(Integer.toString(puzzle.getClue(r, c)));
     title.setFill(Color.WHITE);
     square.getChildren().add(title);
     return square;
   }
-
 
   // Method to create a StackPane for WALL cells
   private StackPane createWallPane() {
@@ -127,6 +125,4 @@ public class GridLinesLayout implements FXComponent {
     stack.getChildren().add(imgView);
     return stack;
   }
-
-
 }
