@@ -13,3 +13,8 @@ To run the application with Maven in IntelliJ, follow these steps:
 3. Expand the "javafx" folder.
 
 4. Double-click "javafx:run" to run the project.
+
+
+
+https://github.com/colbyeagan/akariGame/assets/111590734/f02a8020-475b-4a2d-a3f6-a2a8c415a660
+
